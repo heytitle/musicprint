@@ -12,7 +12,9 @@ window.onload = function(){
     d3.select("body").append("div")
         .text("it works!");
 
-    var screenWidth = window.innerWidth*0.8;
+    var dispatch = d3.dispatch("click-node");
+
+    var screenWidth = window.innerWidth*0.55;
     var screenHeight = window.innerHeight*0.8;
 
     var diameter = screenHeight;
@@ -34,20 +36,16 @@ window.onload = function(){
             .sum(function(d) { return d.value; })
             .sort(function(a, b) { return b.value - a.value; });
 
-        console.log(classes(data));
-
-        console.log(root);
-
         bubble(root);
 
         var node = svg.selectAll(".node")
             .data(root.children)
             .enter().append("g")
             .attr("class", "node")
-            .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-
-        // node.append("title")
-            //     .text(function(d) { return d.data.className + ": " + format(d.value); });
+            .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+            .on('click', function(d){
+                dispatch.call('click-node', this, { data: d, mouse: d3.event });
+            });
 
         var circle = node.append("circle")
             .attr("r", function(d) { return 0; })
@@ -67,6 +65,22 @@ window.onload = function(){
 
     });
 
+
+    dispatch.on('click-node', function(data){
+        console.log('node click');
+        console.log(data);
+        data = data.data;
+        var x  = data.x - 150;
+        x = 1000;
+        var y  = data.y;
+        console.log(x,y);
+        // var y  = 0 - 10;
+
+        // d3.select('#pop-up')
+        //     .style('display', 'block')
+        //     .style('transform','translate('+ x +'px,'+y+'px)');
+    });
+
     // Returns a flattened hierarchy containing all leaf nodes under the root.
     function classes(root) {
         var classes = [];
@@ -80,6 +94,5 @@ window.onload = function(){
         return {children: classes};
     }
 
-    d3.select(self.frameElement).style("height", diameter + "px");
 }
 

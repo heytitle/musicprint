@@ -10,6 +10,7 @@ body {
   position: relative;
   padding: 0px 10px;
   overflow: hidden;
+  background: url(http://i.imgur.com/38woplG.png);
 }
 
 h1 {
@@ -24,20 +25,20 @@ h1 {
     margin: 10px 0px;
 }
 
-.top-right-box {
-    position: absolute;
+.summary {
     top: 0px;
     right: 0px;
-    text-align: right;
     width: 25%;
+    /* background: yellow; */
+    float: left;
 }
 
-.top-right-box h2, .top-right-box h3 {
+.summary h2, .summary h3 {
      margin: 0px 0px;
 }
 
 
-.top-right-box .category-list {
+.summary .category-list {
     margin-top: 20px;
 }
 
@@ -73,10 +74,6 @@ h1 {
      text-align: center;
 }
 
-/* .category li .checkbox.checked { */
-/*     content: "o"; */
-/* } */
-
 .category li .checkbox.checked::before {
     font-size: 24px;
     content: "■";
@@ -91,6 +88,39 @@ h1 {
     text-align: right;
 }
 
+svg { 
+    float: left;
+    width: 55%;
+    height: 100%;
+}
+
 svg.bubble {
-    border: 1px solid black;
+    /* background:red; */
+}
+
+svg .node {
+    cursor: pointer;
+}
+
+.company-profile {
+     width: 20%;
+     height: 100%;
+     float: left;
+     /* background: pink; */
+     text-align: right;
+}
+
+#pop-up {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 300px;
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /* padding: 10px; */
+    border: 1px solid #1163AD;
+    display: none;
+    background: white;
+    transition: transform 0.2s linear;
 }
