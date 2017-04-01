@@ -1,4 +1,5 @@
 require('style!css!./css/style.css');
+require('style!css!./css/hoja.css');
 require('raw!../index.html');
 
 var d3 = require('d3');
@@ -9,9 +10,15 @@ window.d3 = d3;
 var loadedData;
 
 window.onload = function(){
-    var svg = d3.select("svg"),
-    width  = +svg.attr("width"),
-    height = +svg.attr("height");
+    var svg = d3.select("svg");
+    var width  = +svg.attr("width");
+    var height = +svg.attr("height");
+    // width = window.innerWidth;
+    // height = window.innerHeight;
+    // height = +svg.attr("height");
+    // console.log(document.clientHeight);
+
+    console.log(svg.style("width"));
 
     var format = d3.format(",d");
 
@@ -46,22 +53,22 @@ window.onload = function(){
 
       node.append("circle")
           .attr("id", function(d) { return d.id; })
-          .attr("r", function(d) { return d.r; })
-          .style("fill", function(d) { return color(d.package); });
+          .attr("r", function(d) { return d.r; });
+          // .style("fill", "red");
 
       node.append("clipPath")
           .attr("id", function(d) { return "clip-" + d.id; })
-        .append("use")
+          .append("use")
           .attr("xlink:href", function(d) { return "#" + d.id; });
 
-      node.append("text")
-          .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
-        .selectAll("tspan")
-        .data(function(d) { return d.class.split(/(?=[A-Z][^A-Z])/g); })
-        .enter().append("tspan")
-          .attr("x", 0)
-          .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
-          .text(function(d) { return d; });
+      // node.append("text")
+      //     .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+      //   .selectAll("tspan")
+      //   .data(function(d) { return d.class.split(/(?=[A-Z][^A-Z])/g); })
+      //   .enter().append("tspan")
+      //     .attr("x", 0)
+      //     .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
+      //     .text(function(d) { return d; });
 
       node.append("title")
           .text(function(d) { return d.id + "\n" + format(d.value); });
