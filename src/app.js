@@ -58,7 +58,7 @@ window.onload = function(){
 
           node.append("image")
               .attr("xlink:href", function(d) {
-                  return "./icons/"+d.data.icon+".png";
+                  return "./Icons/"+d.data.icon+".png";
               })
               .attr('width', function(d){ return d.r*2 } )
               .attr('height', function(d){ return d.r*2 } )
@@ -66,17 +66,13 @@ window.onload = function(){
               .on('click', function(d){
                   console.log(d);
                   if( d.data.category == 'artists'){
-                        changePage(null, 'artists-page');
+                        changePage('artists-page');
                   }
               });
 
           node.append("circle")
               .attr("id", function(d) { return d.id; })
               .attr("r", function(d) { return d.r; });
-
-
-
-              // .style("fill", "red");
 
           node.append("clipPath")
               .attr("id", function(d) { return "clip-" + d.id; })
@@ -89,11 +85,14 @@ window.onload = function(){
     });
 
     var prevClicked;
-    window.changePage = function( event, page ){
+    window.changePage = function(page ){
 
-        if(event){
-            $(event.target).toggleClass("focus");
-        }
+        var id = '#'+page + '-pointer';
+        console.log(id);
+        // if(event){
+            $(id).toggleClass("focus");
+        // }
+            //
         $(prevClicked).toggleClass("focus");
 
 
@@ -102,10 +101,8 @@ window.onload = function(){
             scrollTop: $("#"+page).offset().top
          }, 500);
 
-        if(event){
-            prevClicked = event.target;
-            event.preventDefault();
-        }
+        prevClicked = id;
+        event.preventDefault();
 
 
 
