@@ -64,10 +64,7 @@ window.onload = function(){
               .attr('height', function(d){ return d.r*2 } )
               .attr("transform", function(d) { return "translate(" + -d.r + "," + -d.r + ")"; })
               .on('click', function(d){
-                  console.log(d);
-                  if( d.data.category == 'artists'){
-                        changePage('artists-page');
-                  }
+                    changePage('artists-page');
               });
 
           node.append("circle")
