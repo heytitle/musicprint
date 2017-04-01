@@ -46,18 +46,25 @@
 
 	__webpack_require__(1);
 	__webpack_require__(5);
+	__webpack_require__(7);
 
-	var d3 = __webpack_require__(6);
-	var _ = __webpack_require__(7);
+	var d3 = __webpack_require__(8);
+	var _ = __webpack_require__(9);
 
 	window.d3 = d3;
 
 	var loadedData;
 
 	window.onload = function(){
-	    var svg = d3.select("svg"),
-	    width  = +svg.attr("width"),
-	    height = +svg.attr("height");
+	    var svg = d3.select("svg");
+	    var width  = +svg.attr("width");
+	    var height = +svg.attr("height");
+	    // width = window.innerWidth;
+	    // height = window.innerHeight;
+	    // height = +svg.attr("height");
+	    // console.log(document.clientHeight);
+
+	    console.log(svg.style("width"));
 
 	    var format = d3.format(",d");
 
@@ -92,22 +99,22 @@
 
 	      node.append("circle")
 	          .attr("id", function(d) { return d.id; })
-	          .attr("r", function(d) { return d.r; })
-	          .style("fill", function(d) { return color(d.package); });
+	          .attr("r", function(d) { return d.r; });
+	          // .style("fill", "red");
 
 	      node.append("clipPath")
 	          .attr("id", function(d) { return "clip-" + d.id; })
-	        .append("use")
+	          .append("use")
 	          .attr("xlink:href", function(d) { return "#" + d.id; });
 
-	      node.append("text")
-	          .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
-	        .selectAll("tspan")
-	        .data(function(d) { return d.class.split(/(?=[A-Z][^A-Z])/g); })
-	        .enter().append("tspan")
-	          .attr("x", 0)
-	          .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
-	          .text(function(d) { return d; });
+	      // node.append("text")
+	      //     .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+	      //   .selectAll("tspan")
+	      //   .data(function(d) { return d.class.split(/(?=[A-Z][^A-Z])/g); })
+	      //   .enter().append("tspan")
+	      //     .attr("x", 0)
+	      //     .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
+	      //     .text(function(d) { return d; });
 
 	      node.append("title")
 	          .text(function(d) { return d.id + "\n" + format(d.value); });
@@ -330,7 +337,7 @@
 
 
 	// module
-	exports.push([module.id, "html, body {\n  margin: 0px;\n  height: 100%;\n}\n\n/* body { */\n/*   color: #1163AD; */\n/*   font-family: sans-serif; */\n/*   /1* background: yellow; *1/ */\n/*   position: relative; */\n/*   padding: 0px 10px; */\n/*   overflow: hidden; */\n/*   background: url(http://i.imgur.com/38woplG.png); */\n/* } */\n\n/* h1 { */\n/*     padding-top: 0px; */\n/*     margin-top: 0px; */\n/*     text-transform: uppercase; */\n/* } */\n/* .wrapper { */\n/*     position: relative; */\n/*     /1* background: red; *1/ */\n/*     height: 100%; */\n/*     margin: 10px 0px; */\n/* } */\n\n/* .summary { */\n/*     top: 0px; */\n/*     right: 0px; */\n/*     width: 25%; */\n/*     /1* background: yellow; *1/ */\n/*     float: left; */\n/* } */\n\n/* .summary h2, .summary h3 { */\n/*      margin: 0px 0px; */\n/* } */\n\n\n/* .summary .category-list { */\n/*     margin-top: 20px; */\n/* } */\n\n/* .category ul { */\n/*     list-style: none; */\n/*     padding: 0px; */\n/*     margin: 0px; */\n/* } */\n\n/* .category { */\n/*     margin-top: 20px; */\n/* } */\n/* .category li { */\n/*      display: inline-block; */\n/*      margin-left: 5px; */\n/*      text-transform: capitalize; */\n/*      line-height: 25px; */\n/* } */\n/* .category .header { */\n/*     font-weight: bold; */\n/*     text-transform: capitalize; */\n/*     font-size: 18px; */\n/*     margin-bottom: 5px; */\n/* } */\n\n/* .category li.checkbox { */\n/*     cursor: pointer; */\n/* } */\n\n/* .category li.checkbox span { */\n/*      display: inline-block; */\n/*      width:  15px; */\n/*      height: 15px; */\n/*      border: 1px solid #1163AD; */\n/*      vertical-align: middle; */\n/*      margin: 0px 5px; */\n/*      line-height: 15px; */\n/*      text-align: center; */\n/* } */\n\n/* .category li.checkbox.checked span::before { */\n/*     font-size: 24px; */\n/*     content: \"■\"; */\n/* } */\n\n\n\n/* .bottom-right-box { */\n/*     position: absolute; */\n/*     bottom: 20px; */\n/*     right: 0px; */\n/*     text-align: right; */\n/*     font-size: 10px; */\n/* } */\n\n/* svg { */ \n/*     float: left; */\n/*     width: 55%; */\n/*     height: 100%; */\n/* } */\n\n/* svg.bubble { */\n/*     /1* background:red; *1/ */\n/* } */\n\n/* svg .node { */\n/*     cursor: pointer; */\n/* } */\n\n/* .company-profile { */\n/*      width: 20%; */\n/*      height: 100%; */\n/*      float: left; */\n/*      /1* background: pink; *1/ */\n/*      text-align: right; */\n/* } */\n\n/* #pop-up { */\n/*     position: absolute; */\n/*     top: 0px; */\n/*     left: 0px; */\n/*     width: 300px; */\n/*     height: 200px; */\n/*     overflow-x: hidden; */\n/*     overflow-y: scroll; */\n/*     /1* padding: 10px; *1/ */\n/*     border: 1px solid #1163AD; */\n/*     display: none; */\n/*     background: white; */\n/*     transition: transform 0.2s linear; */\n/* } */\n\n/* span.highlight { */\n/*     text-decoration: underline; */\n/* } */\n", ""]);
+	exports.push([module.id, "html, body {\n    margin: 0px;\n    height: 100%;\n    font-family: 'Roboto Condensed', sans-serif;\n}\n\n.right-pane {\n    position: absolute;\n    right: 1em;\n    text-align: right;\n}\n\n.right-pane .title {\n    font-size: 5em;\n    font-weight: bold;\n    padding-top: 0.5em;\n}\n\n.rank span {\n    font-size: 2em;\n    font-weight: bold;\n}\n\nh3 {\n    position: absolute;\n    left: 1em;\n}\n\n.center{\n    text-align: center;\n    width: 100%;\n    height: 100%;\n    background: yellow;\n}\n\n.general-fact {\n    margin-top: 2em;\n     width: 25%;\n     float: right;\n     /* position: absolute; */\n     /* bottom: 0.5em; */\n     /* right: 0.5em; */\n     /* background: red; */\n}\n\n.general-fact b {\n    width: 100%;\n     margin-bottom: 0.5em;\n     display: block;\n     text-align: right;\n}\n\n.hide-content {\n    display: none;\n}\n\n.node circle {\n    fill: blue;\n}\n\n/* body { */\n/*   color: #1163AD; */\n/*   font-family: sans-serif; */\n/*   /1* background: yellow; *1/ */\n/*   position: relative; */\n/*   padding: 0px 10px; */\n/*   overflow: hidden; */\n/*   background: url(http://i.imgur.com/38woplG.png); */\n/* } */\n\n/* h1 { */\n/*     padding-top: 0px; */\n/*     margin-top: 0px; */\n/*     text-transform: uppercase; */\n/* } */\n/* .wrapper { */\n/*     position: relative; */\n/*     /1* background: red; *1/ */\n/*     height: 100%; */\n/*     margin: 10px 0px; */\n/* } */\n\n/* .summary { */\n/*     top: 0px; */\n/*     right: 0px; */\n/*     width: 25%; */\n/*     /1* background: yellow; *1/ */\n/*     float: left; */\n/* } */\n\n/* .summary h2, .summary h3 { */\n/*      margin: 0px 0px; */\n/* } */\n\n\n/* .summary .category-list { */\n/*     margin-top: 20px; */\n/* } */\n\n/* .category ul { */\n/*     list-style: none; */\n/*     padding: 0px; */\n/*     margin: 0px; */\n/* } */\n\n/* .category { */\n/*     margin-top: 20px; */\n/* } */\n/* .category li { */\n/*      display: inline-block; */\n/*      margin-left: 5px; */\n/*      text-transform: capitalize; */\n/*      line-height: 25px; */\n/* } */\n/* .category .header { */\n/*     font-weight: bold; */\n/*     text-transform: capitalize; */\n/*     font-size: 18px; */\n/*     margin-bottom: 5px; */\n/* } */\n\n/* .category li.checkbox { */\n/*     cursor: pointer; */\n/* } */\n\n/* .category li.checkbox span { */\n/*      display: inline-block; */\n/*      width:  15px; */\n/*      height: 15px; */\n/*      border: 1px solid #1163AD; */\n/*      vertical-align: middle; */\n/*      margin: 0px 5px; */\n/*      line-height: 15px; */\n/*      text-align: center; */\n/* } */\n\n/* .category li.checkbox.checked span::before { */\n/*     font-size: 24px; */\n/*     content: \"■\"; */\n/* } */\n\n\n\n/* .bottom-right-box { */\n/*     position: absolute; */\n/*     bottom: 20px; */\n/*     right: 0px; */\n/*     text-align: right; */\n/*     font-size: 10px; */\n/* } */\n\n/* svg { */ \n/*     float: left; */\n/*     width: 55%; */\n/*     height: 100%; */\n/* } */\n\n/* svg.bubble { */\n/*     /1* background:red; *1/ */\n/* } */\n\n/* svg .node { */\n/*     cursor: pointer; */\n/* } */\n\n/* .company-profile { */\n/*      width: 20%; */\n/*      height: 100%; */\n/*      float: left; */\n/*      /1* background: pink; *1/ */\n/*      text-align: right; */\n/* } */\n\n/* #pop-up { */\n/*     position: absolute; */\n/*     top: 0px; */\n/*     left: 0px; */\n/*     width: 300px; */\n/*     height: 200px; */\n/*     overflow-x: hidden; */\n/*     overflow-y: scroll; */\n/*     /1* padding: 10px; *1/ */\n/*     border: 1px solid #1163AD; */\n/*     display: none; */\n/*     background: white; */\n/*     transition: transform 0.2s linear; */\n/* } */\n\n/* span.highlight { */\n/*     text-decoration: underline; */\n/* } */\n", ""]);
 
 	// exports
 
@@ -645,12 +652,52 @@
 
 /***/ },
 /* 5 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<!DOCTYPE html>\n<html>\n    <head>\n        <meta http-equiv=\"content-type\" content=\"text/html; charset=\">\n        <title></title>\n        <script type=\"text/javascript\" src=\"bundle.js\" charset=\"utf-8\"></script>\n    </head>\n    <body>\n        <svg width=\"960\" height=\"782\" font-family=\"sans-serif\" font-size=\"10\" text-anchor=\"middle\"></svg>\n    </body>\n</html>\n"
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(6);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./hoja.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./hoja.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
 /* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".image {\n    width: 20px;\n    height: 20px;\n    vertical-align: middle;\n    -webkit-animation:spin 2s linear infinite;\n    -moz-animation:spin 2s linear infinite;\n    animation:spin 2s linear infinite;\n}\n@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }\n@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }\n@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	module.exports = "<!DOCTYPE html>\n<html>\n    <head>\n        <meta http-equiv=\"content-type\" content=\"text/html; charset=\">\n        <title></title>\n        <script type=\"text/javascript\" src=\"bundle.js\" charset=\"utf-8\"></script>\n        <link href=\"https://fonts.googleapis.com/css?family=Roboto+Condensed\" rel=\"stylesheet\">\n    </head>\n    <body>\n        <h3>\n            <img class=\"image\" src=\"http://i.imgur.com/DbCuue5.png\" alt=\"\">\n            MUSICPRINT\n        </h3>\n        <div class=\"right-pane\">\n            <div class=\"title\">BERLIN</div>\n            <div class=\"rank\">Rank <span>1st</span></div>\n        <div class=\"general-fact\">\n            <div>\n                - From the legendary Tresor Club to the world’s best club at the moment – the Berghain. The first parties were held back in the 1990s in disused cellars and empty industrial buildings. Now there is nothing quite like the scene in Berlin anywhere else in the world. No other city has as many techno and electro clubs as Berlin. Techno tourists from all over Europe come to the River Spree every weekend to party from Friday evening until the early hours of Monday morning. Berlin is the clubbing capital of the world.\n            </div>\n        </div>\n        </div>\n        <div class=\"center\">\n            <svg width=\"900\" height=\"700\" font-family=\"sans-serif\" font-size=\"10\" text-anchor=\"middle\"></svg>\n        </div>\n\n\n        <iframe class=\"hide-content\" width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/oUGrpElxnXI?list=PLElmZ6Nd-iHpEi1-9H7C4YHIOYdD4hQTx&autoplay=1\" frameborder=\"0\" allowfullscreen></iframe>\n    </body>\n</html>\n"
+
+/***/ },
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://d3js.org Version 4.2.6. Copyright 2016 Mike Bostock.
@@ -16940,7 +16987,7 @@
 
 
 /***/ },
-/* 7 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module, _) {/**
@@ -33926,10 +33973,10 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(8)(module), __webpack_require__(7)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(10)(module), __webpack_require__(9)))
 
 /***/ },
-/* 8 */
+/* 10 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
