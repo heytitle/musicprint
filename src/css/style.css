@@ -8,6 +8,7 @@ html, body {
     position: absolute;
     right: 1em;
     text-align: right;
+    width: 25%;
 }
 
 .right-pane .title {
@@ -16,14 +17,53 @@ html, body {
     padding-top: 0.5em;
 }
 
+.left-pane {
+    position: absolute;
+    left: 1em;
+}
+
+.rank {
+    margin-bottom: 4em;
+}
+
 .rank span {
-    font-size: 2em;
+    font-size: 3em;
     font-weight: bold;
 }
 
-h3 {
-    position: absolute;
-    left: 1em;
+
+.header-main {
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.main.content {
+    margin-bottom: 1em;
+}
+
+.header {
+    font-weight: bold;
+    font-size: 0.7em;
+    text-transform: uppercase;
+}
+
+.left-pane .content {
+    font-size: 1em;
+}
+
+.left-pane .metric {
+    font-size: 0.7em;
+}
+
+.left-pane .content .bar {
+    display: inline-block;
+    background: black;
+    line-height: 0.7em;
+    height: 2.5px;
+    vertical-align: middle;
+    margin-right: 0.5em;
+    opacity: 0.7;
 }
 
 .center{
@@ -35,7 +75,6 @@ h3 {
 
 .general-fact {
     margin-top: 2em;
-     width: 25%;
      float: right;
      /* position: absolute; */
      /* bottom: 0.5em; */
@@ -55,137 +94,29 @@ h3 {
 }
 
 .node circle {
-    fill: blue;
+    fill: none;
 }
 
-/* body { */
-/*   color: #1163AD; */
-/*   font-family: sans-serif; */
-/*   /1* background: yellow; *1/ */
-/*   position: relative; */
-/*   padding: 0px 10px; */
-/*   overflow: hidden; */
-/*   background: url(http://i.imgur.com/38woplG.png); */
-/* } */
+.node {
+    cursor: pointer;
+}
 
-/* h1 { */
-/*     padding-top: 0px; */
-/*     margin-top: 0px; */
-/*     text-transform: uppercase; */
-/* } */
-/* .wrapper { */
-/*     position: relative; */
-/*     /1* background: red; *1/ */
-/*     height: 100%; */
-/*     margin: 10px 0px; */
-/* } */
+span.bold {
+    font-weight: bold;
+}
 
-/* .summary { */
-/*     top: 0px; */
-/*     right: 0px; */
-/*     width: 25%; */
-/*     /1* background: yellow; *1/ */
-/*     float: left; */
-/* } */
+svg {
+    z-index: 1000;
+}
 
-/* .summary h2, .summary h3 { */
-/*      margin: 0px 0px; */
-/* } */
-
-
-/* .summary .category-list { */
-/*     margin-top: 20px; */
-/* } */
-
-/* .category ul { */
-/*     list-style: none; */
-/*     padding: 0px; */
-/*     margin: 0px; */
-/* } */
-
-/* .category { */
-/*     margin-top: 20px; */
-/* } */
-/* .category li { */
-/*      display: inline-block; */
-/*      margin-left: 5px; */
-/*      text-transform: capitalize; */
-/*      line-height: 25px; */
-/* } */
-/* .category .header { */
-/*     font-weight: bold; */
-/*     text-transform: capitalize; */
-/*     font-size: 18px; */
-/*     margin-bottom: 5px; */
-/* } */
-
-/* .category li.checkbox { */
-/*     cursor: pointer; */
-/* } */
-
-/* .category li.checkbox span { */
-/*      display: inline-block; */
-/*      width:  15px; */
-/*      height: 15px; */
-/*      border: 1px solid #1163AD; */
-/*      vertical-align: middle; */
-/*      margin: 0px 5px; */
-/*      line-height: 15px; */
-/*      text-align: center; */
-/* } */
-
-/* .category li.checkbox.checked span::before { */
-/*     font-size: 24px; */
-/*     content: "■"; */
-/* } */
-
-
-
-/* .bottom-right-box { */
-/*     position: absolute; */
-/*     bottom: 20px; */
-/*     right: 0px; */
-/*     text-align: right; */
-/*     font-size: 10px; */
-/* } */
-
-/* svg { */ 
-/*     float: left; */
-/*     width: 55%; */
-/*     height: 100%; */
-/* } */
-
-/* svg.bubble { */
-/*     /1* background:red; *1/ */
-/* } */
-
-/* svg .node { */
-/*     cursor: pointer; */
-/* } */
-
-/* .company-profile { */
-/*      width: 20%; */
-/*      height: 100%; */
-/*      float: left; */
-/*      /1* background: pink; *1/ */
-/*      text-align: right; */
-/* } */
-
-/* #pop-up { */
-/*     position: absolute; */
-/*     top: 0px; */
-/*     left: 0px; */
-/*     width: 300px; */
-/*     height: 200px; */
-/*     overflow-x: hidden; */
-/*     overflow-y: scroll; */
-/*     /1* padding: 10px; *1/ */
-/*     border: 1px solid #1163AD; */
-/*     display: none; */
-/*     background: white; */
-/*     transition: transform 0.2s linear; */
-/* } */
-
-/* span.highlight { */
-/*     text-decoration: underline; */
-/* } */
+.order-print {
+    position: absolute;
+    left: 1em;
+    bottom: 1em;
+    font-size: 0.8em;
+}
+.metric-desc {
+    margin-top: 2em;
+    font-size: 0.5em;
+    cursor: pointer;
+}

@@ -51,9 +51,19 @@ window.onload = function(){
           .attr("class", "node")
           .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
+      var imageIcon = "https://cdn2.iconfinder.com/data/icons/city-icons-for-offscreen-magazine/80/berlin-256.png";
+      node.append("image")
+          .attr("xlink:href", imageIcon)
+          .attr('width', function(d){ return d.r*2 } )
+          .attr('height', function(d){ return d.r*2 } )
+          .attr("transform", function(d) { return "translate(" + -d.r + "," + -d.r + ")"; });
+
       node.append("circle")
           .attr("id", function(d) { return d.id; })
           .attr("r", function(d) { return d.r; });
+
+
+
           // .style("fill", "red");
 
       node.append("clipPath")
