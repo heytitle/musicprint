@@ -133,16 +133,15 @@ svg {
 .artists li {
     list-style: none;
     display: inline-block;
-    width: 25px;
-    height: 25px;
     /* float: right; */
 }
 
 .artists ul{
     float: right;
     padding: 0px;
+    margin-bottom: 5px;
     /* float: right; */
-    width: 60%;
+    width: 80%;
     /* text-align: right; */
 }
 
@@ -167,3 +166,14 @@ svg {
     position: absolute;
 }
 
+.artist-image {
+     width: 30px;
+     height: 30px;
+     margin: 0.5px;
+}
+
+.artists span {
+     margin-top: 0px;
+     font-size: 0.6em;
+     float: right;
+}

@@ -33,7 +33,7 @@ window.onload = function(){
             .padding(1.5);
 
         // d3.csv("flare.csv", function(d) {
-        d3.csv("berlin-city.csv", function(d) {
+        d3.csv("berlin-music2.csv", function(d) {
           d.value = +d.value;
           if (d.value) return d;
         }, function(error, classes) {
