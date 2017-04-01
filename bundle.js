@@ -109,10 +109,11 @@
 	              .attr('width', function(d){ return d.r*2 } )
 	              .attr('height', function(d){ return d.r*2 } )
 	              .attr("transform", function(d) { return "translate(" + -d.r + "," + -d.r + ")"; })
-	              .on('click', function(){
-
-	                  console.log('click image');
-	                window.location.href = '#artists-page';
+	              .on('click', function(d){
+	                  console.log(d);
+	                  if( d.data.category == 'artists'){
+	                        changePage(null, 'artists-page');
+	                  }
 	              });
 
 	          node.append("circle")
@@ -135,17 +136,24 @@
 
 	    var prevClicked;
 	    window.changePage = function( event, page ){
-	         // window.location.href = '#'+page;
 
-	         $(event.target).toggleClass("focus");
-	         $(prevClicked).toggleClass("focus");
-	         prevClicked = event.target;
+	        if(event){
+	            $(event.target).toggleClass("focus");
+	        }
+	        $(prevClicked).toggleClass("focus");
+
+
 
 	         $('html, body').animate({
 	            scrollTop: $("#"+page).offset().top
 	         }, 500);
 
-	         event.preventDefault();
+	        if(event){
+	            prevClicked = event.target;
+	            event.preventDefault();
+	        }
+
+
 
 	    }
 	}
