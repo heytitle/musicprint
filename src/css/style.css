@@ -20,6 +20,7 @@ html, body {
 .left-pane {
     position: fixed;
     left: 1em;
+    z-index:2000;
 }
 
 .rank {
@@ -158,3 +159,11 @@ svg {
 .header.focus, .header-main.focus {
      text-decoration: underline;
 }
+
+.artist-chart {
+    padding-top: 10%;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+}
+
